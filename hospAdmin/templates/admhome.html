@@ -1,0 +1,66 @@
+{% extends 'hmsbase.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login As</title>
+    <style>
+        .card {
+            text-align: center;
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">LOGIN AS</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/admpage">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/admin.webp' %}" alt="Admin">
+                            <h5 class="card-title">Admin</h5>
+                            <p class="card-text">Login as an admin</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/doclogin">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/doctor.png' %}" alt="Doctor">
+                            <h5 class="card-title">Doctor</h5>
+                            <p class="card-text">Login as a doctor</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/receplogin">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/recep.png' %}" alt="Receptionist">
+                            <h5 class="card-title">Receptionist</h5>
+                            <p class="card-text">Login as a receptionist</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

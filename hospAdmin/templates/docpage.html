@@ -1,0 +1,27 @@
+{%extends 'docmainnav.html'%}
+{% block content %}
+{% load static %}
+<style>
+    .centered-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .card-link {
+      text-align: center;
+    }
+  </style>
+  <div class="container centered-content">
+    <h1>Doctor Dashboard</h1>
+    <div class="card mt-3" style="width: 18rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title">View Appointments</h5>
+        <a href="/docviewappointments">
+          <img src="{%static 'assets/images/viewapp.png'%}" alt="View Appointments" class="img-fluid">
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

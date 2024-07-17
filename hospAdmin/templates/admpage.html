@@ -1,0 +1,65 @@
+{% extends 'admpagenav.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login As</title>
+    <style>
+        .card {
+            text-align: center;
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">ADMIN DASHBOARD</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/patientpage">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/patients.png' %}" alt="Admin">
+                            <h5 class="card-title">Patient Info</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/doctorpage">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/doctor.png' %}" alt="Doctor">
+                            <h5 class="card-title">Doctor Info</h5>
+                            {% comment %} <p class="card-text">Login as a doctor</p> {% endcomment %}
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/receptionistpage">
+                        <div class="card-body">
+                            <img src="{% static 'assets/images/recep.png' %}" alt="Receptionist">
+                            <h5 class="card-title">Receptionist Info</h5>
+                            {% comment %} <p class="card-text">Login as a receptionist</p> {% endcomment %}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

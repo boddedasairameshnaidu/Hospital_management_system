@@ -1,0 +1,86 @@
+{% extends 'admpagenav.html'%}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .card {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .card a {
+                text-decoration: none;
+                color: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h1 class="text-center my-4">RECEPTIONIST INFORMATION</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/addreceptionist">
+                            <img src="{% static 'assets/images/addrecep.png' %}" class="card-img-top" alt="Card 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Receptionist</h5>
+                                {% comment %} <p class="card-text">Description for card 1.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/updatereceptionist">
+                            <img src="{% static 'assets/images/updatedoc.png' %}" class="card-img-top" alt="Card 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Update Receptionist</h5>
+                                {% comment %} <p class="card-text">Description for card 2.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/deletereceptionist">
+                            <img src="{% static 'assets/images/delrecep.jpg' %}" class="card-img-top" alt="Card 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Delete Receptionist</h5>
+                                {% comment %} <p class="card-text">Description for card 3.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/searchreceptionist">
+                            <img src="{% static 'assets/images/searchrecep.png' %}" class="card-img-top" alt="Card 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Search Receptionist</h5>
+                                {% comment %} <p class="card-text">Description for card 4.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/viewreceptionist">
+                            <img src="{% static 'assets/images/viewrecep.png' %}" class="card-img-top" alt="Card 5">
+                            <div class="card-body">
+                                <h5 class="card-title">View Receptionists</h5>
+                                {% comment %} <p class="card-text">Description for card 5.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'admpagenav.html'%}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .card {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .card a {
+                text-decoration: none;
+                color: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h1 class="text-center my-4">PATIENT INFORMATION</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/addpatient">
+                            <img src="{% static 'assets/images/addpatient.png' %}" class="card-img-top" alt="Card 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Patient</h5>
+                                {% comment %} <p class="card-text">Description for card 1.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/updatepatient">
+                            <img src="{% static 'assets/images/updatepatient.webp' %}" class="card-img-top" alt="Card 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Update Patient</h5>
+                                {% comment %} <p class="card-text">Description for card 2.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/deletepatient">
+                            <img src="{% static 'assets/images/delpatient.png' %}" class="card-img-top" alt="Card 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Delete Patient</h5>
+                                {% comment %} <p class="card-text">Description for card 3.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/searchpatient">
+                            <img src="{% static 'assets/images/searchpatient.webp' %}" class="card-img-top" alt="Card 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Search Patient</h5>
+                                {% comment %} <p class="card-text">Description for card 4.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <a href="/viewpatient">
+                            <img src="{% static 'assets/images/patients.png' %}" class="card-img-top" alt="Card 5">
+                            <div class="card-body">
+                                <h5 class="card-title">View Patient</h5>
+                                {% comment %} <p class="card-text">Description for card 5.</p> {% endcomment %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}

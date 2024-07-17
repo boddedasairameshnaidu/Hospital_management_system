@@ -1,0 +1,139 @@
+{% extends 'recepmainnav.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .top-form {
+        margin-top: 10px;
+    }
+    .top-form1 {
+        margin-top: 20px;
+    }
+    .table-hover tbody tr:hover {
+        cursor: pointer;
+    }
+    .selected {
+        background-color: #d3d3d3 !important;
+    }
+</style>
+
+<div class="container">
+    <div class="top-form">
+        <form action="/searchdocbydept/" method="GET">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="input-group mb-3">
+                        <select class="form-control" id="dept" name="dept" required>
+                            <option value="" disabled selected>Select Department</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Radiology">Radiology</option>
+                            <option value="Surgery">Surgery</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if d %}
+    <div class="top-form1">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in d %}
+                <tr onclick="selectRow(this)">
+                    <form action="/selectdoctoraction/" method="POST">
+                        {% csrf_token %}
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.phone}}</td>
+                        <input type="hidden" name="id" value="{{i.id}}">
+                        <input type="hidden" name="name" value="{{i.name}}">
+                        <input type="hidden" name="phone" value="{{i.phone}}">
+                        <td><button class='btn btn-primary'>Select</button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if x %}
+    <div class="top-form1">
+        <h2 class="text-center mb-4">Select Patient</h2>
+        <form action="/selectpatientbyId/" method="GET">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search_query" placeholder="Enter patient ID" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    {% if data %}
+    <div class="top-form1">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Disease</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <form action="/makeappointment/" method="POST" onsubmit="return validateForm(this);">
+                        {% csrf_token %}
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.disease}}</td>
+                        <td><input type="date" name="date" required></td>
+                        <input type="hidden" name="id" value="{{i.id}}">
+                        <input type="hidden" name="name" value="{{i.name}}">
+                        <input type="hidden" name="disease" value="{{i.disease}}">
+                        <td><button class='btn btn-primary'>Book Appointment</button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    {% if msg %}
+    <h1>{{msg}}</h1>
+    {% endif %}
+</div>
+
+<script>
+    function validateForm(form) {
+        const dateInput = form.querySelector('input[type="date"]');
+        if (!dateInput.value) {
+            alert("Please enter a date before submitting.");
+            return false;
+        }
+        form.parentElement.classList.add('selected');
+        return true;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'recepnav.html'%}
+{% block content %}
+{% load static %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                {% if stz %}
+                <h2 class="text-center mb-4">{{msg}}</h2>
+                {% else %}
+                <h2 class="text-center mb-4">Search Receptionist</h2>
+                {% endif %}
+                <form action="/searchreceptionistactionmain/" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search_query" placeholder="Enter Receptionist ID" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% if d %}
+{% for i in d %}
+<table class="table table-striped mt-3">
+    <tbody>
+        <tr>
+            <th scope="row">Name</th>
+            <td>{{i.name}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Id</th>
+            <td>{{i.id}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Phone</th>
+            <td>{{i.phone}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Address</th>
+            <td>{{i.address}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Age</th>
+            <td>{{i.age}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Gender</th>
+            <td>{{i.gender}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Blood Group</th>
+            <td>{{i.blood_group}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'doctorpagenav.html'%}
+{% block content %}
+{% load static %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                {% if stz %}
+                <h2 class="text-center mb-4">{{msg}}</h2>
+                {% else %}
+                <h2 class="text-center mb-4">Delete Doctor</h2>
+                {% endif %}
+                <form action="/deletedoctoraction/" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="delete_query" placeholder="Enter doctor ID" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

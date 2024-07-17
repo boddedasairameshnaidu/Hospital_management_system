@@ -1,0 +1,55 @@
+{% extends 'docmainnav.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        {% if msg %}
+        <div class="col">
+            <h1 class="my-4">{{msg}}</h1>
+        </div>
+        {% else %}
+        <div class="col">
+            <h1 class="my-4">My Appointments</h1>
+        </div>
+        {% endif %}
+    </div>
+    {% if d %}
+    <div class="row top-form1">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Patient_Id</th>
+                        <th scope="col">Patient_Name</th>
+                        <th scope="col">Disease</th>
+                        <th scope="col">Appointment_Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in d %}
+                    <tr>
+                        <form action="/delapprecord/" method="POST">
+                            {% csrf_token %}
+                            <td>{{i.patient_id}}</td>
+                            <td>{{i.patient_name}}</td>
+                            <td>{{i.disease}}</td>
+                            <td>{{i.date}}</td>
+                            <input type="hidden" name="id" value="{{i.patient_id}}">
+                            <input type="hidden" name="name" value="{{i.patient_name}}">
+                            <input type="hidden" name="disease" value="{{i.disease}}">
+                            <input type="hidden" name="date" value="{{i.date}}">
+                            <td>
+                                <button type="submit" class="btn btn-primary">Mark as complete</button>
+                            </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    
+</div>
+{% endblock %}
